@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "9e04d36f-81ce-4b3a-be66-99832c87ff7a",
+		"name": "Cripto Investor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4788847",
+		"_collection_link": "https://bold-comet-287163-1.postman.co/workspace/Aptitude~78ecf9fc-bae7-4675-9dd2-5b8672cc7b52/collection/4788847-9e04d36f-81ce-4b3a-be66-99832c87ff7a?action=share&source=collection_link&creator=4788847"
+	},
+	"item": [
+		{
+			"name": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd",
+					"protocol": "https",
+					"host": [
+						"api",
+						"coingecko",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "bitcoin,ethereum"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "usd"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
