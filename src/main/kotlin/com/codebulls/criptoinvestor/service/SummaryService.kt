@@ -1,5 +1,7 @@
-package com.codebulls.criptoinvestor.Service
+package com.codebulls.criptoinvestor.service
 
+import com.codebulls.criptoinvestor.constants.Currencies
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
@@ -7,8 +9,9 @@ import org.springframework.web.util.UriComponentsBuilder
 @Service
 class SummaryService( private val restTemplate: RestTemplate = RestTemplate() ) {
 
+    @Cacheable("summaryCache")
     fun getNumbers(
-        ids: Array<String> = arrayOf("bitcoin", "ethereum"),
+        ids: Array<String> = arrayOf(Currencies.BITCOIN.toString(), Currencies.ETHEREUM.toString()),
         vsCurrencies: Array<String> = arrayOf("usd")
     ): Map<String, Any>? {
         val url = UriComponentsBuilder
