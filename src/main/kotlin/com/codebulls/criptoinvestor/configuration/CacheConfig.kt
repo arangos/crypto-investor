@@ -12,16 +12,24 @@ class CacheConfig {
 
     @Bean
     fun cacheManager(): CacheManager{
-        val cache = CaffeineCache(
-            "summaryCache",
+        val marketCache = CaffeineCache(
+            "marketCache",
                   Caffeine.newBuilder()
                     .maximumSize(100)
                     .expireAfterWrite(8, java.util.concurrent.TimeUnit.HOURS)
                     .build()
         )
 
+        val candleStickCache = CaffeineCache(
+            "candleStickCache",
+            Caffeine.newBuilder()
+                .maximumSize(200)
+                .expireAfterWrite(4, java.util.concurrent.TimeUnit.HOURS)
+                .build()
+        )
+
         val manager = SimpleCacheManager()
-        manager.setCaches(listOf(cache))
+        manager.setCaches(listOf(marketCache, candleStickCache))
         return manager
     }
 
