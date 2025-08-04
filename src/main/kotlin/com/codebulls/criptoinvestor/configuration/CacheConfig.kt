@@ -28,8 +28,16 @@ class CacheConfig {
                 .build()
         )
 
+        val binanceCache = CaffeineCache(
+            "binanceCache",
+            Caffeine.newBuilder()
+                .maximumSize(100)
+                .expireAfterWrite(4, java.util.concurrent.TimeUnit.HOURS)
+                .build()
+        )
+
         val manager = SimpleCacheManager()
-        manager.setCaches(listOf(marketCache, candleStickCache))
+        manager.setCaches(listOf(marketCache, candleStickCache, binanceCache))
         return manager
     }
 
